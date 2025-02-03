@@ -1,30 +1,39 @@
-def calculator():
-    print("Welcome to the Calculator!")
-    print("Select operation:")
-    print("1. Add")
-    print("2. Subtract")
-    print("3. Multiply")
-    print("4. Divide")
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Calculator</title>
+    <script>
+        function calculate() {
+            let num1 = parseFloat(document.getElementById("num1").value);
+            let num2 = parseFloat(document.getElementById("num2").value);
+            let operation = document.getElementById("operation").value;
+            let result;
 
-    choice = input("Enter choice (1/2/3/4): ")
+            if (operation == "add") {
+                result = num1 + num2;
+            } else if (operation == "subtract") {
+                result = num1 - num2;
+            } else if (operation == "multiply") {
+                result = num1 * num2;
+            } else if (operation == "divide") {
+                result = num2 !== 0 ? num1 / num2 : "Error! Division by zero.";
+            }
 
-    if choice in ['1', '2', '3', '4']:
-        num1 = float(input("Enter first number: "))
-        num2 = float(input("Enter second number: "))
-
-        if choice == '1':
-            print(f"The result is: {num1 + num2}")
-        elif choice == '2':
-            print(f"The result is: {num1 - num2}")
-        elif choice == '3':
-            print(f"The result is: {num1 * num2}")
-        elif choice == '4':
-            if num2 != 0:
-                print(f"The result is: {num1 / num2}")
-            else:
-                print("Error! Division by zero.")
-    else:
-        print("Invalid input")
-
-# Run the calculator
-calculator()
+            document.getElementById("result").innerText = "Result: " + result;
+        }
+    </script>
+</head>
+<body>
+    <h2>Simple Calculator</h2>
+    <input type="number" id="num1">
+    <select id="operation">
+        <option value="add">+</option>
+        <option value="subtract">-</option>
+        <option value="multiply">×</option>
+        <option value="divide">÷</option>
+    </select>
+    <input type="number" id="num2">
+    <button onclick="calculate()">Calculate</button>
+    <h3 id="result"></h3>
+</body>
+</html>
